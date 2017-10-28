@@ -36,8 +36,8 @@ class Solution:
             newX = bitFix + newX
 
 
-        #print(newX, " is the binary representation of x ", x)
-        #print(newY, " is the binary representation of y ", y)
+        print(newX, " is the binary representation of x ", x)
+        print(newY, " is the binary representation of y ", y)
 
         distance = 0
 
