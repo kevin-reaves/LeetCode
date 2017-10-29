@@ -42,12 +42,9 @@ class Solution:
 
         distance = 0
 
-        try:
-            for count in range(len(newX)):
-                if newX[count] != newY[count]:
-                    distance += 1
-        except IndexError:
-            distance += 1
+        for count in range(len(newX)):
+            if newX[count] != newY[count]:
+                distance += 1
 
         return distance
 
