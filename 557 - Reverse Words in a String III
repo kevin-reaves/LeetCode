@@ -20,10 +20,9 @@ class Solution:
             word = word[::-1]
             newStr.append(word)
 
-
-        "I originally tried newStr = newStr + word + ' '"
-        "That left a space at the end of the line. Join was a clean way to " \
-        "fix the space issue"
+        #I originally tried newStr = newStr + word + ' '
+        #That left a space at the end of the line. Join was a clean way to
+        #fix the space issue
         newStr = " ".join(str(x) for x in newStr)
         return newStr
 
