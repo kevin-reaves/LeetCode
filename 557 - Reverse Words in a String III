@@ -1,0 +1,32 @@
+#!/usr/bin/python
+
+"""
+Given a string, you need to reverse the order of characters in each word
+within a sentence while still preserving whitespace and initial word order.
+
+Example 1:
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+Note: In the string, each word is separated by single space and there will
+not be any extra space in the string.
+
+"""
+
+class Solution:
+    def reverseWords(self, s):
+        newStr = []
+
+        for word in s.split(" "):
+            word = word[::-1]
+            newStr.append(word)
+
+
+        "I originally tried newStr = newStr + word + ' '"
+        "That left a space at the end of the line. Join was a clean way to " \
+        "fix the space issue"
+        newStr = " ".join(str(x) for x in newStr)
+        return newStr
+
+solution = Solution()
+
+print(solution.reverseWords("Let's take LeetCode contest"))
