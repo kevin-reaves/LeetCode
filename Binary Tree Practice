@@ -1,0 +1,103 @@
+#!/usr/bin/python
+
+"""
+This isn't a leetcode problem. I'm seeing a lot of problems that relate to BST
+and I haven't actually coded a BST in a while. So this is just to re learn how
+to do them.
+"""
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+        # Level for depth first traversal
+        self.level = None
+
+    def __str__(self):
+        return str(self.data)
+
+
+class searchtree:
+    def __init__(self):
+        self.root = None
+
+    def create(self, val):
+        if self.root == None:
+            self.root = Node(val)
+
+        else:
+            current = self.root
+            while 1:
+
+                if val < current.data:
+                    if current.left:
+                        current = current.left
+
+                    else:
+                        current.left = Node(val)
+                        break;
+
+                elif val > current.data:
+                    if current.right:
+                        current = current.right
+
+                    else:
+                        current.right = Node(val)
+                        break;
+
+                else:
+                    break
+
+    def bft(self):
+        """
+        Digs down row by row to print values in this format
+        1
+        2 3
+        4 5 6
+        """
+
+        self.root.level = 0
+        queue = [self.root]
+        out = []
+        current_level = self.root.level
+
+        while len(queue) > 0:
+
+            current_node = queue.pop(0)
+
+            if current_node.level > current_level:
+                current_level += 1
+                out.append("\n")
+
+            out.append(str(current_node.data) + " ")
+
+            if current_node.left:
+                current_node.left.level = current_level + 1
+                queue.append(current_node.left)
+
+            if current_node.right:
+                current_node.right.level = current_level + 1
+                queue.append(current_node.right)
+
+        print "".join(out)
+
+    def inorder(self, node):
+        # prints in numerical order
+        if node is not None:
+            # Checks left and right nodes, if they don't exist they won't be
+            # printed
+            self.inorder(node.left)
+            print node.data
+            self.inorder(node.right)
+
+
+tree = searchtree()
+arr = [7, 2, 3, 6, 9, 10, 11, 15, 19, 21, 100]
+for i in arr:
+    tree.create(i)
+print 'Breadth-First Traversal'
+tree.bft()
+print 'Inorder Traversal'
+tree.inorder(tree.root)
