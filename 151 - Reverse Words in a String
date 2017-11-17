@@ -20,4 +20,4 @@ class Solution(object):
         return newS
 
 solution = Solution()
-print(solution.reverseWords("I really enjoy tacos"))
+print(solution.reverseWords("a"))
