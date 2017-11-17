@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+"""
+Given an input string, reverse the string word by word.
+
+For example,
+Given s = "the sky is blue",
+return "blue is sky the".
+"""
+
+class Solution(object):
+    def reverseWords(self, s):
+
+        if not s or s.isspace():
+            return ""
+
+        newS = s.split()
+        newS = newS[::-1]
+        newS = ' '.join(newS)
+        return newS
+
+solution = Solution()
+print(solution.reverseWords("I really enjoy tacos"))
