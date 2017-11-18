@@ -1,0 +1,85 @@
+#!/usr/bin/python
+
+"""
+Given a matrix of m x n elements (m rows, n columns), return all elements
+of the matrix in spiral order.
+
+For example,
+Given the following matrix:
+
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+You should return [1,2,3,6,9,8,7,4,5].
+
+Credit to
+https://discuss.leetcode.com/topic/5729/simple-python-solution-by-mutating-the-matrix
+"""
+
+
+class Solution(object):
+    def spiralOrder(self, matrix):
+        ret = []
+        while matrix:
+            # top row
+            ret += matrix.pop(0)
+            if matrix and matrix[0]:
+                for row in matrix:
+                    # right side
+                    ret.append(row.pop())
+            if matrix:
+                # bottom row, I'd never thought about reversing pop output
+                ret += matrix.pop()[::-1]
+            if matrix and matrix[0]:
+                for row in matrix[::-1]:
+                    # middle row
+                    ret.append(row.pop(0))
+        return ret
+
+
+
+solution = Solution()
+
+# Should print in numerical order
+myMatrix = \
+    [
+        [1, 2, 3],
+        [8, 9, 4],
+        [7, 6, 5]
+    ]
+
+print(solution.spiralOrder(myMatrix))
+
+# This was my attempt. It started to break down heavily with different
+# combinations of row/column length. From the other solution, matrix.pop(0)
+# would have been a better solution for appending the top row. I should have
+# also made better use of removing items from matrix
+"""
+def spiralOrder(self, matrix):
+    inOrder = []
+
+    if matrix == []:
+        return []
+
+    for topRow in range(0, len(matrix[0])):
+        inOrder.append(matrix[0][topRow])
+
+    # Starts at 1 because the right corner item was already added
+    for rightSide in range(1, len(matrix)):
+        inOrder.append(matrix[rightSide][-1])
+
+    # This is ugly, need to find a better solution
+    # len(matrix[-1]) is the length of the bottom row
+    # -2 handles the list being 0 indexed and ignoring the last element
+    # First -1 because 0 was ignoring the 0th element
+    for bottomRow in range(len(matrix[-1]) -2, -1, -1):
+        inOrder.append(matrix[-1][bottomRow])
+
+    middleNum = len(matrix) // 2
+    for middleRow in range(0,  len(matrix[middleNum]) -1):
+        inOrder.append(matrix[middleNum][middleRow])
+
+    return inOrder
+    """
