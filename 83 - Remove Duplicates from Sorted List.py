@@ -31,7 +31,6 @@ class Solution(object):
             print(current.val)
             current = current.next
 
-
 head = ListNode(100)
 node1 = ListNode(101)
 node2 = ListNode(101)
