@@ -70,7 +70,7 @@ class Solution:
             # Checks left and right nodes, if they don't exist they won't be
             # printed
             self.inorder(node.left)
-            print node.val
+            print(node.val)
             self.inorder(node.right)
 
 solution = Solution()
