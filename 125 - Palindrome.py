@@ -27,6 +27,7 @@ class Solution(object):
         s = "".join([str.lower() for str in s if str.isalnum()])
         return s == s[::-1]
 
+
 solution = Solution()
 print(solution.isPalindrome("A man, a plan, a canal: Panama"))
 print(solution.isPalindrome("T@@@A###C$$$O%%%C%^^^A!@#$T!!!"))
