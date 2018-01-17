@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- 
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+-->
+
+<script>
+var twoSum = function(nums, target) {
+	if (nums.length < 1){
+		return false
+	}
+	
+	var result = [];
+	
+	
+	for (var i = 0, len = nums.length; i < len; i++) {
+		var searchVar = target - nums[i];
+		var searchIndex = nums.indexOf(searchVar);
+		
+		if (searchIndex > -1 && searchIndex !== i){
+			result[0] = i;
+			result[1] = searchIndex;
+			return result;
+		}
+		
+		
+	}
+};
+
+var nums = [3, 3]
+var target = [6]
+
+document.write(twoSum(nums, target))
+</script>
+
+</body>
+</html>
