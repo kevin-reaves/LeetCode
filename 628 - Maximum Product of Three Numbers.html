@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--
+Given an integer array, find three numbers whose product is maximum and output
+the maximum product.
+
+Example 1:
+Input: [1,2,3]
+Output: 6
+Example 2:
+Input: [1,2,3,4]
+Output: 24
+Note:
+The length of the given array will be in range [3,104] and all elements are in
+the range [-1000, 1000].
+Multiplication of any three numbers in the input won't exceed the range of
+32-bit signed integer.
+-->
+<script>
+<!-- The negative numbers here threw me off. I didn't
+consider them becoming positive with multiplication -->
+
+var maximumProduct = function(nums) {
+    var ans = first = second = third = Number.NEGATIVE_INFINITY;
+    var last = secLast = Number.POSITIVE_INFINITY;
+
+    for (var num in nums){
+        if (nums[num] > first){
+            third = second;
+            second = first;
+            first = nums[num];
+        } else if (nums[num] > second){
+            third = second;
+            second = nums[num];
+        } else if (nums[num] > third){
+            third = nums[num];
+        }
+
+        if (nums[num] < last){
+            secLast = last;
+            last = nums[num];
+        } else if (nums[num] < secLast){
+            secLast = nums[num];
+        }
+    }
+
+    var pos = first * second * third;
+    var neg = first * last * secLast;
+
+    return Math.max(pos, neg);
+
+};
+
+/*
+var nums = [42,	42,	36,	56,	12,
+            41,	55,	94,	2,	55,
+            96,	57,	98,	67,	18,
+            50,	46,	41,	83,	89,
+            12,	17,	28,	3,	60,
+            40,	76,	6,	42,	54,
+            89,	13,	70,	4,	75,
+            89,	62,	46,	20,	42,
+            95,	5,	11,	49,	14,
+            40,	47,	38,	7,	71,
+            49,	17,	33,	50,	83,
+            24,	91,	65,	77,	10,
+            19,	33,	85,	3,	6 ,
+            55,	60,	6,	65,	26,
+            55,	68,	24,	74,	44,
+            3,	4,	25,	39,	65,
+            60,	41,	85,	21,	63,
+            78,	20,	48,	24,	64,
+            22,	50,	52,	11,	83,
+            17,	69,	49,	94,	21];
+*/
+
+var nums = [-4,-3,-2,-1,60];
+
+document.write(maximumProduct(nums));
+
+</script>
+
+
+
+</body>
+</html>
