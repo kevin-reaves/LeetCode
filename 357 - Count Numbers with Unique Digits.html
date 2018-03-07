@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x < 10n.
+
+Example:
+Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x < 100^n, excluding [11,22,33,44,55,66,77,88,99])
+-->
+
+
+<body>
+<script>
+var countNumbersWithUniqueDigits = function(n) {
+    if(n == 0){
+		return 1;
+	}
+	
+	if(n == 1){
+		return 10;
+	}
+	
+	return countNumbersWithUniqueDigits(n-1) + (countNumbersWithUniqueDigits(n-1)-countNumbersWithUniqueDigits(n-2))*(10-(n-1))
+};
+
+n = 9;
+document.write(countNumbersWithUniqueDigits(n));
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
